@@ -24,6 +24,7 @@ public class CircuitBreakerController {
     }
 
     public ResponseEntity<String> hardCodedResponse(Exception exception){
+        log.info("fallback method hardCodedResponse");
         return ResponseEntity.ok("fallbackMethod");
     }
 }
