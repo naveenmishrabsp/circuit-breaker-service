@@ -6,9 +6,4 @@ resilience4j:
     instances:
       sample-api:
         max-attempts: 5
-        wait-duration: 2s
-       
-spring:
-  cloud:
-    config:
-      enabled: false                     
+        wait-duration: 2s                         
