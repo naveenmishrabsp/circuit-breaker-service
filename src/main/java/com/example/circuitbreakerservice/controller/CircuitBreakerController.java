@@ -18,7 +18,7 @@ public class CircuitBreakerController {
     @Retry(name = "sample-api", fallbackMethod = "hardCodedResponse")
    // @Bulkhead(name="sample-api", fallbackMethod = "hardCodedResponse")
     public ResponseEntity<String> getMessage(){
-    	log.debug("Sample api call");
+    	log.info("Sample api call");
         new RestTemplate().getForEntity("https://resilience4j.readme.io0/docs",String.class);
         return ResponseEntity.ok("Hello");
     }
