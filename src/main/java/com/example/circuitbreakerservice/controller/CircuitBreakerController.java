@@ -5,6 +5,7 @@ import lombok.extern.log4j.Log4j2;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -13,14 +14,14 @@ import org.springframework.web.client.RestTemplate;
 public class CircuitBreakerController {
 
 
-    //localhost:8090/sample-api
-    @GetMapping("/sample-api")
+    //localhost:8090/sample-api/Naveen
+    @GetMapping("/sample-api/{name}")
     @Retry(name = "sample-api", fallbackMethod = "hardCodedResponse")
    // @Bulkhead(name="sample-api", fallbackMethod = "hardCodedResponse")
-    public ResponseEntity<String> getMessage(){
+    public ResponseEntity<String> getMessage(@PathVariable String name){
     	log.info("Sample api call");
-        new RestTemplate().getForEntity("https://resilience4j.readme.io0/docs",String.class);
-        return ResponseEntity.ok("Hello");
+        new RestTemplate().getForEntity("https://www.google.com",String.class);
+        return ResponseEntity.ok("<h1 color:red>Hello:"+name+"<h1/>");
     }
 
     public ResponseEntity<String> hardCodedResponse(Exception exception){
