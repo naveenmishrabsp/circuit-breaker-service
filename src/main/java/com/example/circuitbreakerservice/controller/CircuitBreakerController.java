@@ -20,12 +20,12 @@ public class CircuitBreakerController {
    // @Bulkhead(name="sample-api", fallbackMethod = "hardCodedResponse")
     public ResponseEntity<String> getMessage(@PathVariable String name){
     	log.info("Sample api call");
-        new RestTemplate().getForEntity("https://www.google.com",String.class);
+        new RestTemplate().getForEntity("https://www.google.cojm",String.class);
         return ResponseEntity.ok("<h1 color:red>Hello:"+name+"<h1/>");
     }
 
     public ResponseEntity<String> hardCodedResponse(Exception exception){
-        log.info("fallback method hardCodedResponse");
+        log.info("newly added fallback method hardCodedResponse");
         return ResponseEntity.ok("fallbackMethod");
     }
 }
